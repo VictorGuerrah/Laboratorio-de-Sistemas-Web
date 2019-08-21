@@ -13,7 +13,7 @@
     </head>
     <body>
         <div style="padding-left: 95%; margin-top: 2%;">
-            <button>sair</button>
+            <button><a href="login.jsp"> Sair</a></button>
         </div>
         <div>
             <center>

@@ -14,6 +14,10 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
+        <% if(session.getAttribute("erro") != null){ %>
+        <p> <%= session.getAttribute("erro") %>
+            <% session.removeAttribute("erro");%> 
+            <% } %>
         <div style="margin-left: 82%;">
             <%= new Date() %>
         </div>
