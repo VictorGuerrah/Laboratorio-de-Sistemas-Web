@@ -1,49 +1,29 @@
 <%-- 
     Document   : menu
-    Created on : 15/08/2019, 21:54:37
+    Created on : 15/08/2019, 21:55:26
     Author     : ice
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+<%throw new ServletException("teste"); %>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
     </head>
+    <style>
+        button{
+            position: absolute;
+            left: 50%;
+            border: solid 1px black;
+            text-align: center; 
+       }
+    </style>
     <body>
-        <div style="padding-left: 95%; margin-top: 2%;">
-            <button>sair</button>
-        </div>
-        <div>
-            <center>
-                <h1>Página Inicial</h1>
-            </center>
-            <hr>
-            <br>
-            <ul>
-                <li>Menu</li>
-                <li>Menu</li>
-                <li>Menu</li>
-                <li>Menu</li>
-                <li>Menu</li>
-                <li>Menu</li>
-                <li>Menu</li>
-                <li>Menu</li>
-                <li>Menu</li>
-                <li>Menu</li>
-                <li>Menu</li>
-                <li>Menu</li>
-                <li>Menu</li>
-                <li>Menu</li>
-                <li>Menu</li>
-                <li>Menu</li>
-                <li>Menu</li>
-                <li>Menu</li>
-                <li>Menu</li>
-                <li>Menu</li>
-                <li>Menu</li>
-            </ul>
-        </div>
+        
+        <a href="s1?origem=menu">Sair do sistema</a>
+        <a href="404error">Erro HTML</a>
+            
     </body>
 </html>

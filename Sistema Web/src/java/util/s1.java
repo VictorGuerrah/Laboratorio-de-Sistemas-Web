@@ -11,13 +11,14 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
  * @author ice
  */
 public class s1 extends HttpServlet {
-
+    
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -29,34 +30,33 @@ public class s1 extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        String origem = request.getParameter("origem");
         
-        String senha = request.getServletContext().getInitParameter("senha");
-        String login = request.getServletContext().getInitParameter("login");
-        String versao = this.getInitParameter("versao");
-        
-        String u_nome = request.getParameter("nome");
-        String u_senha = request.getParameter("senha");
-        if(login.equals(u_nome) && senha.equals(u_senha)){
-            request.getRequestDispatcher("menu.jsp").forward(request, response);
-        }else{
-            // incluir o atributo erro no objeto session
-            request.getSession().setAttribute("erro", "senha errada");
+        HttpSession session = request.getSession(true);
+        if(session.getAttribute("ativo") == null && !origem.equals("login")){
+            request.getSession().setAttribute("erro", "Sua sessão deve ter expirado");
             request.getRequestDispatcher("login.jsp").forward(request, response);
         }
         
-//        response.setContentType("text/html;charset=UTF-8");
-//        try (PrintWriter out = response.getWriter()) {
-//            /* TODO output your page here. You may use following sample code. */
-//            out.println("<!DOCTYPE html>");
-//            out.println("<html>");
-//            out.println("<head>");
-//            out.println("<title>Servlet s1</title>");            
-//            out.println("</head>");
-//            out.println("<body>");
-//            out.println("<h1>" + resultado + "</h1>");
-//            out.println("</body>");
-//            out.println("</html>");
-//        }
+        if("login".equals(origem)){
+            String senha = request.getServletContext().getInitParameter("senha");
+            String login = request.getServletContext().getInitParameter("login");
+            String u_login = request.getParameter("login");
+            String u_senha = request.getParameter("senha");
+            if(login.equals(u_login) && senha.equals(u_senha)){
+                request.getSession().setAttribute("ativo", "esta ativo");
+                request.getRequestDispatcher("menu.jsp").forward(request, response); //mudar de página
+            }else{
+                // incluir o atributo erro no objeto session
+                request.getSession().setAttribute("erro", "senha errada");
+                request.getRequestDispatcher("login.jsp").forward(request, response); //mudar de página
+            }
+        }
+        else if(origem == "menu"){
+            request.getRequestDispatcher("login.jsp").forward(request, response);
+        }
+        
+        response.setContentType("text/html;charset=UTF-8");
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

@@ -1,6 +1,6 @@
 <%-- 
     Document   : login
-    Created on : 15/08/2019, 21:24:56
+    Created on : 15/08/2019, 21:23:11
     Author     : ice
 --%>
 
@@ -8,25 +8,33 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>TODO supply a title</title>
+    
+   <head>
+        <title>Tela de login jsp</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
+    <style>
+        .tempo{
+            position: absolute;
+            right: 20px;
+            
+        }
+    </style>
     <body>
-        <% if(session.getAttribute("erro") != null){ %>
-        <p> <%= session.getAttribute("erro") %>
-            <% session.removeAttribute("erro");%> 
-            <% } %>
-        <div style="margin-left: 82%;">
+        <div class="tempo">
             <%= new Date() %>
         </div>
-    <center style="margin-top: 10%;">
-        
-        <h1>Login JSP</h1>
+        <% if(session.getAttribute("erro") != null){%>
+        <p> <%= session.getAttribute("erro") %>
+            <% session.removeAttribute("erro");%>
+        <%}%>
+    <center>
+        <h1>Tela de Login</h1>
         <form method=POST ACTION='s1'>
-            <input type="text" placeholder="login" name="nome"><br><br>
+            <input type="text" placeholder="login" name="login"><br><br>
             <input type="password" placeholder="senha" name="senha"><br><br>
+            <input type="hidden" value="login"name="origem"><br><br>
             <input type="submit" value="Enviar">
         </form>
     </center>
