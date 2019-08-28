@@ -7,8 +7,8 @@
 <!-- the Compile on Save feature is turned off for the project. -->
 <!-- You can turn off the Compile on Save (or Deploy on Save) setting -->
 <!-- in the project's Project Properties dialog box.-->
-<project name="Sistema_Web" default="default" basedir=".">
-    <description>Builds, tests, and runs the project Sistema Web.</description>
+<project name="aula-22-08-19" default="default" basedir=".">
+    <description>Builds, tests, and runs the project aula-22-08-19.</description>
     <import file="nbproject/build-impl.xml"/>
     <!--
 
